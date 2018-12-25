@@ -32,6 +32,7 @@ import jp.co.cyberagent.stf.io.MessageWriter;
 import jp.co.cyberagent.stf.monitor.AbstractMonitor;
 import jp.co.cyberagent.stf.monitor.AirplaneModeMonitor;
 import jp.co.cyberagent.stf.monitor.BatteryMonitor;
+import jp.co.cyberagent.stf.monitor.StorageMonitor;
 import jp.co.cyberagent.stf.monitor.BrowserPackageMonitor;
 import jp.co.cyberagent.stf.monitor.ConnectivityMonitor;
 import jp.co.cyberagent.stf.monitor.PhoneStateMonitor;
@@ -156,6 +157,7 @@ public class Service extends android.app.Service {
                     acceptor = new LocalServerSocket(socketName);
 
                     addMonitor(new BatteryMonitor(this, writers));
+                    addMonitor(new StorageMonitor(this, writers));
                     addMonitor(new ConnectivityMonitor(this, writers));
                     addMonitor(new PhoneStateMonitor(this, writers));
                     addMonitor(new RotationMonitor(this, writers));
